@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Todos from "./Todos";
 
 const DemoComp = () => {
   const [count, setCount] = useState(0);
   const [todos, setTodos] = useState([]);
-  const calculation = expensiveCalc(count);
+  const calculation = useMemo(() => expensiveCalc(count), [count]); //only changes alias here
 
   const incHandler = () => {
     setCount((prev) => prev + 1);
